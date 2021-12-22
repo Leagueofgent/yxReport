@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aks.yxReport.mapper.HyfyReportMapper" >
+  <resultMap id="BaseResultMap" type="com.aks.yxReport.pojo.HyfyReport" >
+    <result column="dh" property="dh" jdbcType="NVARCHAR" />
+    <result column="sqr" property="sqr" jdbcType="NVARCHAR" />
+    <result column="fygsgs" property="fygsgs" jdbcType="NVARCHAR" />
+    <result column="xmh" property="xmh" jdbcType="NVARCHAR" />
+    <result column="ssbm" property="ssbm" jdbcType="NVARCHAR" />
+    <result column="skdw" property="skdw" jdbcType="NVARCHAR" />
+    <result column="sqsj" property="sqsj" jdbcType="NVARCHAR" />
+    <result column="fylb" property="fylb" jdbcType="NVARCHAR" />
+    <result column="glht" property="glht" jdbcType="NVARCHAR" />
+    <result column="htze" property="htze" jdbcType="NVARCHAR" />
+    <result column="bcfkje" property="bcfkje" jdbcType="NVARCHAR" />
+    <result column="yfkje" property="yfkje" jdbcType="NVARCHAR" />
+    <result column="dfkje" property="dfkje" jdbcType="NVARCHAR" />
+    <result column="sfscfp" property="sfscfp" jdbcType="NVARCHAR" />
+    <result column="dqhj" property="dqhj" jdbcType="NVARCHAR" />
+    <result column="wdzt" property="wdzt" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    dh, sqr, fygsgs, xmh, ssbm, skdw, sqsj, fylb, glht, htze, bcfkje, yfkje, dfkje, sfscfp, 
+    dqhj, wdzt
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aks.yxReport.pojo.HyfyReportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from hyfy
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.aks.yxReport.pojo.HyfyReportExample" >
+    delete from hyfy
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aks.yxReport.pojo.HyfyReport" >
+    insert into hyfy (dh, sqr, fygsgs, 
+      xmh, ssbm, skdw, 
+      sqsj, fylb, glht, 
+      htze, bcfkje, yfkje, 
+      dfkje, sfscfp, dqhj, 
+      wdzt)
+    values (#{dh,jdbcType=NVARCHAR}, #{sqr,jdbcType=NVARCHAR}, #{fygsgs,jdbcType=NVARCHAR}, 
+      #{xmh,jdbcType=NVARCHAR}, #{ssbm,jdbcType=NVARCHAR}, #{skdw,jdbcType=NVARCHAR}, 
+      #{sqsj,jdbcType=NVARCHAR}, #{fylb,jdbcType=NVARCHAR}, #{glht,jdbcType=NVARCHAR}, 
+      #{htze,jdbcType=NVARCHAR}, #{bcfkje,jdbcType=NVARCHAR}, #{yfkje,jdbcType=NVARCHAR}, 
+      #{dfkje,jdbcType=NVARCHAR}, #{sfscfp,jdbcType=NVARCHAR}, #{dqhj,jdbcType=NVARCHAR}, 
+      #{wdzt,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aks.yxReport.pojo.HyfyReport" >
+    insert into hyfy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dh != null" >
+        dh,
+      </if>
+      <if test="sqr != null" >
+        sqr,
+      </if>
+      <if test="fygsgs != null" >
+        fygsgs,
+      </if>
+      <if test="xmh != null" >
+        xmh,
+      </if>
+      <if test="ssbm != null" >
+        ssbm,
+      </if>
+      <if test="skdw != null" >
+        skdw,
+      </if>
+      <if test="sqsj != null" >
+        sqsj,
+      </if>
+      <if test="fylb != null" >
+        fylb,
+      </if>
+      <if test="glht != null" >
+        glht,
+      </if>
+      <if test="htze != null" >
+        htze,
+      </if>
+      <if test="bcfkje != null" >
+        bcfkje,
+      </if>
+      <if test="yfkje != null" >
+        yfkje,
+      </if>
+      <if test="dfkje != null" >
+        dfkje,
+      </if>
+      <if test="sfscfp != null" >
+        sfscfp,
+      </if>
+      <if test="dqhj != null" >
+        dqhj,
+      </if>
+      <if test="wdzt != null" >
+        wdzt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dh != null" >
+        #{dh,jdbcType=NVARCHAR},
+      </if>
+      <if test="sqr != null" >
+        #{sqr,jdbcType=NVARCHAR},
+      </if>
+      <if test="fygsgs != null" >
+        #{fygsgs,jdbcType=NVARCHAR},
+      </if>
+      <if test="xmh != null" >
+        #{xmh,jdbcType=NVARCHAR},
+      </if>
+      <if test="ssbm != null" >
+        #{ssbm,jdbcType=NVARCHAR},
+      </if>
+      <if test="skdw != null" >
+        #{skdw,jdbcType=NVARCHAR},
+      </if>
+      <if test="sqsj != null" >
+        #{sqsj,jdbcType=NVARCHAR},
+      </if>
+      <if test="fylb != null" >
+        #{fylb,jdbcType=NVARCHAR},
+      </if>
+      <if test="glht != null" >
+        #{glht,jdbcType=NVARCHAR},
+      </if>
+      <if test="htze != null" >
+        #{htze,jdbcType=NVARCHAR},
+      </if>
+      <if test="bcfkje != null" >
+        #{bcfkje,jdbcType=NVARCHAR},
+      </if>
+      <if test="yfkje != null" >
+        #{yfkje,jdbcType=NVARCHAR},
+      </if>
+      <if test="dfkje != null" >
+        #{dfkje,jdbcType=NVARCHAR},
+      </if>
+      <if test="sfscfp != null" >
+        #{sfscfp,jdbcType=NVARCHAR},
+      </if>
+      <if test="dqhj != null" >
+        #{dqhj,jdbcType=NVARCHAR},
+      </if>
+      <if test="wdzt != null" >
+        #{wdzt,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aks.yxReport.pojo.HyfyReportExample" resultType="java.lang.Integer" >
+    select count(*) from hyfy
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update hyfy
+    <set >
+      <if test="record.dh != null" >
+        dh = #{record.dh,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.sqr != null" >
+        sqr = #{record.sqr,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fygsgs != null" >
+        fygsgs = #{record.fygsgs,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.xmh != null" >
+        xmh = #{record.xmh,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.ssbm != null" >
+        ssbm = #{record.ssbm,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.skdw != null" >
+        skdw = #{record.skdw,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.sqsj != null" >
+        sqsj = #{record.sqsj,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fylb != null" >
+        fylb = #{record.fylb,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.glht != null" >
+        glht = #{record.glht,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.htze != null" >
+        htze = #{record.htze,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bcfkje != null" >
+        bcfkje = #{record.bcfkje,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.yfkje != null" >
+        yfkje = #{record.yfkje,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.dfkje != null" >
+        dfkje = #{record.dfkje,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.sfscfp != null" >
+        sfscfp = #{record.sfscfp,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.dqhj != null" >
+        dqhj = #{record.dqhj,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.wdzt != null" >
+        wdzt = #{record.wdzt,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update hyfy
+    set dh = #{record.dh,jdbcType=NVARCHAR},
+      sqr = #{record.sqr,jdbcType=NVARCHAR},
+      fygsgs = #{record.fygsgs,jdbcType=NVARCHAR},
+      xmh = #{record.xmh,jdbcType=NVARCHAR},
+      ssbm = #{record.ssbm,jdbcType=NVARCHAR},
+      skdw = #{record.skdw,jdbcType=NVARCHAR},
+      sqsj = #{record.sqsj,jdbcType=NVARCHAR},
+      fylb = #{record.fylb,jdbcType=NVARCHAR},
+      glht = #{record.glht,jdbcType=NVARCHAR},
+      htze = #{record.htze,jdbcType=NVARCHAR},
+      bcfkje = #{record.bcfkje,jdbcType=NVARCHAR},
+      yfkje = #{record.yfkje,jdbcType=NVARCHAR},
+      dfkje = #{record.dfkje,jdbcType=NVARCHAR},
+      sfscfp = #{record.sfscfp,jdbcType=NVARCHAR},
+      dqhj = #{record.dqhj,jdbcType=NVARCHAR},
+      wdzt = #{record.wdzt,jdbcType=NVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

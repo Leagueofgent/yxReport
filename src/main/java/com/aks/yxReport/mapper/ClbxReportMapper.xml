@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aks.yxReport.mapper.ClbxReportMapper" >
+  <resultMap id="BaseResultMap" type="com.aks.yxReport.pojo.ClbxReport" >
+    <result column="dh" property="dh" jdbcType="NVARCHAR" />
+    <result column="sqr" property="sqr" jdbcType="NVARCHAR" />
+    <result column="ssbm" property="ssbm" jdbcType="NVARCHAR" />
+    <result column="fycdbm" property="fycdbm" jdbcType="NVARCHAR" />
+    <result column="sqrq" property="sqrq" jdbcType="NVARCHAR" />
+    <result column="fygs" property="fygs" jdbcType="NVARCHAR" />
+    <result column="xmh" property="xmh" jdbcType="NVARCHAR" />
+    <result column="cwqrhjje" property="cwqrhjje" jdbcType="NVARCHAR" />
+    <result column="dqhj" property="dqhj" jdbcType="NVARCHAR" />
+    <result column="wdzt" property="wdzt" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    dh, sqr, ssbm, fycdbm, sqrq, fygs, xmh, cwqrhjje, dqhj, wdzt
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.aks.yxReport.pojo.ClbxReportExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from clbx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.aks.yxReport.pojo.ClbxReportExample" >
+    delete from clbx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aks.yxReport.pojo.ClbxReport" >
+    insert into clbx (dh, sqr, ssbm, 
+      fycdbm, sqrq, fygs, 
+      xmh, cwqrhjje, dqhj, 
+      wdzt)
+    values (#{dh,jdbcType=NVARCHAR}, #{sqr,jdbcType=NVARCHAR}, #{ssbm,jdbcType=NVARCHAR}, 
+      #{fycdbm,jdbcType=NVARCHAR}, #{sqrq,jdbcType=NVARCHAR}, #{fygs,jdbcType=NVARCHAR}, 
+      #{xmh,jdbcType=NVARCHAR}, #{cwqrhjje,jdbcType=NVARCHAR}, #{dqhj,jdbcType=NVARCHAR}, 
+      #{wdzt,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aks.yxReport.pojo.ClbxReport" >
+    insert into clbx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dh != null" >
+        dh,
+      </if>
+      <if test="sqr != null" >
+        sqr,
+      </if>
+      <if test="ssbm != null" >
+        ssbm,
+      </if>
+      <if test="fycdbm != null" >
+        fycdbm,
+      </if>
+      <if test="sqrq != null" >
+        sqrq,
+      </if>
+      <if test="fygs != null" >
+        fygs,
+      </if>
+      <if test="xmh != null" >
+        xmh,
+      </if>
+      <if test="cwqrhjje != null" >
+        cwqrhjje,
+      </if>
+      <if test="dqhj != null" >
+        dqhj,
+      </if>
+      <if test="wdzt != null" >
+        wdzt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dh != null" >
+        #{dh,jdbcType=NVARCHAR},
+      </if>
+      <if test="sqr != null" >
+        #{sqr,jdbcType=NVARCHAR},
+      </if>
+      <if test="ssbm != null" >
+        #{ssbm,jdbcType=NVARCHAR},
+      </if>
+      <if test="fycdbm != null" >
+        #{fycdbm,jdbcType=NVARCHAR},
+      </if>
+      <if test="sqrq != null" >
+        #{sqrq,jdbcType=NVARCHAR},
+      </if>
+      <if test="fygs != null" >
+        #{fygs,jdbcType=NVARCHAR},
+      </if>
+      <if test="xmh != null" >
+        #{xmh,jdbcType=NVARCHAR},
+      </if>
+      <if test="cwqrhjje != null" >
+        #{cwqrhjje,jdbcType=NVARCHAR},
+      </if>
+      <if test="dqhj != null" >
+        #{dqhj,jdbcType=NVARCHAR},
+      </if>
+      <if test="wdzt != null" >
+        #{wdzt,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aks.yxReport.pojo.ClbxReportExample" resultType="java.lang.Integer" >
+    select count(*) from clbx
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update clbx
+    <set >
+      <if test="record.dh != null" >
+        dh = #{record.dh,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.sqr != null" >
+        sqr = #{record.sqr,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.ssbm != null" >
+        ssbm = #{record.ssbm,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fycdbm != null" >
+        fycdbm = #{record.fycdbm,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.sqrq != null" >
+        sqrq = #{record.sqrq,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fygs != null" >
+        fygs = #{record.fygs,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.xmh != null" >
+        xmh = #{record.xmh,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.cwqrhjje != null" >
+        cwqrhjje = #{record.cwqrhjje,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.dqhj != null" >
+        dqhj = #{record.dqhj,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.wdzt != null" >
+        wdzt = #{record.wdzt,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update clbx
+    set dh = #{record.dh,jdbcType=NVARCHAR},
+      sqr = #{record.sqr,jdbcType=NVARCHAR},
+      ssbm = #{record.ssbm,jdbcType=NVARCHAR},
+      fycdbm = #{record.fycdbm,jdbcType=NVARCHAR},
+      sqrq = #{record.sqrq,jdbcType=NVARCHAR},
+      fygs = #{record.fygs,jdbcType=NVARCHAR},
+      xmh = #{record.xmh,jdbcType=NVARCHAR},
+      cwqrhjje = #{record.cwqrhjje,jdbcType=NVARCHAR},
+      dqhj = #{record.dqhj,jdbcType=NVARCHAR},
+      wdzt = #{record.wdzt,jdbcType=NVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
